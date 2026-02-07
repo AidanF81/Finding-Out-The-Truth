@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opinion Counter</title>
+	<link rel="stylesheet" href="ErikDrinks.css">
+</head>
+<body>
+
+	<div class="background-image">
+        <img src="2Alkies.jpg" alt="Some Dumb Drunk">
+    </div>
+
+    <h1>IMPORTANT PUBLIC HEALTH AND SAFTEFY VOTE</h1>
+
+    <p>
+        Number of people who think <strong>Erik Alfonseco</strong> is a dirty alcoholic:
+    </p>
+
+    <p>
+        <span id="count">0</span>
+    </p>
+
+    <button id="voteButton">
+        of course, he has nothing else in his life
+    </button>
+
+	<div class="beer-animation">
+		<img id="beerMug" src="beer-mug.jpg" alt="Beer Mug">
+	</div>
+
+    <script>
+		// Get elements
+		const countDisplay = document.getElementById("count");
+		const button = document.getElementById("voteButton");
+		const beerMug = document.getElementById("beerMug");
+
+		// Load counter from localStorage, default to 0
+		let count = localStorage.getItem("erikCounter");
+		count = count ? parseInt(count) : 0;
+		countDisplay.textContent = count;
+
+		button.addEventListener("click", function () {
+			// Update counter
+			count++;
+			countDisplay.textContent = count;
+
+			// Save counter to localStorage
+			localStorage.setItem("erikCounter", count);
+
+			// Trigger beer mug animation
+			beerMug.classList.add("animate");
+
+			// Remove animation class after it finishes
+			setTimeout(() => {
+				beerMug.classList.remove("animate");
+			}, 600);
+		});
+	</script>
+	
+	
+
+</body>
+</html>
